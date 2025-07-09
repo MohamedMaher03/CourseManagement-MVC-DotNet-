@@ -35,7 +35,9 @@ namespace MVCProject.Controllers
 		[HttpPost]
 		public IActionResult AddCourse(CourseForm viewModel)
 		{
-			if (IsValidCourse(viewModel))
+			ModelState.Remove("Departments");
+
+			if (ModelState.IsValid==true)
 			{
 				CourseBL courseBL = new CourseBL();
 				Course newCourse = new Course
