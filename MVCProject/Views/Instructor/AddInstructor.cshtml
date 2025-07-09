@@ -1,0 +1,46 @@
+﻿@model InstructorForm
+
+
+@{
+    ViewData["Title"] = "AddInstructor";
+}
+
+<h1>AddInstructor</h1>
+
+<form method="post" action="/Instructor/CreateOrEditInstructor">
+    <label>Name</label>
+	<input type="text" name="Instructor.Name" value="@Model?.Instructor?.Name"  class="form-control" placeholder="Enter Name"  />    
+<br />
+	<label>Image</label>
+	<input type="text" name="Instructor.Image" class="form-control"  />
+	<br />
+	
+	<label>Salary</label>
+	<input type="number" name="Instructor.Salary" value="@Model?.Instructor?.Salary" class="form-control" placeholder="Enter Salary"  />
+	<br />
+	
+	<label>Address</label>
+	<input type="text" name="Instructor.Address" value="@Model?.Instructor?.Address" class="form-control" placeholder="Enter Address"  />
+	<br />
+	
+	<label>Department</label>
+	<select name="SelectedDepartmentId" class="form-control">
+		@foreach (var department in Model.DepartmentsItems)
+		{
+			<option value="@department.Id">@department.Name</option>
+		}
+	</select>
+	<br />
+	
+	<label>Course</label>
+	<select name="SelectedCourseId" class="form-control">
+		@foreach (var course in Model.CoursesItems)
+		{
+			<option value="@course.Id">@course.Name</option>
+		}
+	</select>
+	<br />
+	
+	<button type="submit" class="btn btn-primary">Add Instructor</button>
+</form>
+

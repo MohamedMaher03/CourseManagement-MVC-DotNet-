@@ -1,0 +1,30 @@
+﻿@model CourseForm
+
+@{
+    ViewData["Title"] = "AddCourse";
+	SelectList deptOptions = new SelectList(Model.Departments, "Id", "Name");
+}
+
+<h1>AddCourse</h1>
+
+<form method="post" asp-action="AddCourse" asp-controller="Course">
+	<label asp-for="Name"></label>
+	<input asp-for="Name" class="form-control" placeholder="Enter course Name"/>
+	<br />
+
+	<label asp-for="Degree"></label>
+	<input asp-for="Degree" class="form-control" placeholder="Enter Degree" />
+	<br />
+
+	<label asp-for="MinDegree"></label>
+	<input asp-for="MinDegree" class="form-control" placeholder="Enter Min Degree" />
+	<br />
+
+	<label asp-for="SelectedDepartmentId">Department</label>
+	<select asp-for="SelectedDepartmentId" asp-items="@deptOptions" class="form-control">
+	</select>
+	<br />
+
+	<button type="submit" class="btn btn-primary">Add Course</button>
+</form>
+

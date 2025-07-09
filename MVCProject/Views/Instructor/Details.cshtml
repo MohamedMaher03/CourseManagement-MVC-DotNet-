@@ -1,0 +1,21 @@
+﻿@model Instructor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="card" style="width: 400px; margin: 20px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 10px;">
+    <div class="card-body text-center">
+        <img src="~/images/Instructors/@Model.Image" alt="@Model.Name" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 3px solid #007bff; margin-bottom: 15px;" />
+
+        <h3 class="card-title">@Model.Name</h3>
+        <p class="card-text"><strong>ID:</strong> @Model.Id</p>
+        <p class="card-text"><strong>Salary:</strong> @Model.Salary EGP</p>
+        <p class="card-text"><strong>Address:</strong> @Model.Address</p>
+        <p class="card-text"><strong>Department:</strong> @Model.Department.Name</p>
+        <p class="card-text"><strong>Course:</strong> @Model.Course.Name</p>
+    </div>
+</div>
+

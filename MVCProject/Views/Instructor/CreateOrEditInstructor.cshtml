@@ -1,0 +1,76 @@
+﻿@model InstructorForm
+@{
+    ViewData["Title"] = ViewData["Title"] ?? "Instructor";
+    var isEdit = Model?.Instructor?.Id > 0;
+    var actionText = ViewData["Action"]?.ToString() ?? (isEdit ? "Edit" : "Add");
+}
+
+<h1>@actionText Instructor</h1>
+
+<form method="post" action="@(isEdit ? $"/Instructor/CreateOrEditInstructor/{@Model.Instructor.Id}" : "/Instructor/CreateOrEditInstructor")">
+    @if (isEdit)
+    {
+        <input type="hidden" name="Instructor.Id" value="@Model.Instructor.Id" />
+    }
+    
+    <label>Name</label>
+    <input type="text" name="Instructor.Name" value="@Model?.Instructor?.Name" class="form-control" placeholder="Enter Name" />
+    <br />
+    
+    <label>Image</label>
+    <input type="text" name="Instructor.Image" value="@Model?.Instructor?.Image" class="form-control" placeholder="Enter Image URL" />
+    <br />
+    
+    <label>Salary</label>
+    <input type="number" name="Instructor.Salary" value="@Model?.Instructor?.Salary" class="form-control" placeholder="Enter Salary" />
+    <br />
+    
+    <label>Address</label>
+    <input type="text" name="Instructor.Address" value="@Model?.Instructor?.Address" class="form-control" placeholder="Enter Address" />
+    <br />
+    
+    <label>Department</label>
+    <select name="SelectedDepartmentId" class="form-control">
+        <option value="">Select Department</option>
+        @if (Model?.DepartmentsItems != null)
+        {
+            @foreach (var department in Model.DepartmentsItems)
+            {
+                if (department.Id == Model.SelectedDepartmentId)
+                {
+                    <option value="@department.Id" selected>@department.Name</option>
+				}
+				else
+				{
+					<option value="@department.Id">@department.Name</option>
+                    
+                }
+            }
+        }
+    </select>
+    <br />
+    
+    <label>Course</label>
+    <select name="SelectedCourseId" class="form-control">
+        <option value="">Select Course</option>
+        @if (Model?.CoursesItems != null)
+        {
+            @foreach (var course in Model.CoursesItems)
+            {
+                if (course.Id == Model.SelectedCourseId)
+                {
+                                <option value="@course.Id" selected>@course.Name</option>
+                }
+                else
+                {
+                                <option value="@course.Id">@course.Name</option>
+
+                }
+            }
+        }
+    </select>
+    <br />
+    
+    <button type="submit" class="btn btn-primary">@actionText Instructor</button>
+    <a href="/Instructor/Index" class="btn btn-secondary">Cancel</a>
+</form>
