@@ -10,19 +10,24 @@
 <form method="post" asp-action="AddCourse" asp-controller="Course">
 	<label asp-for="Name"></label>
 	<input asp-for="Name" class="form-control" placeholder="Enter course Name"/>
+	<span asp-validation-for="Name" class="text-danger"></span>
 	<br />
 
 	<label asp-for="Degree"></label>
 	<input asp-for="Degree" class="form-control" placeholder="Enter Degree" />
+<span asp-validation-for="Degree" class="text-danger"></span>
 	<br />
 
 	<label asp-for="MinDegree"></label>
 	<input asp-for="MinDegree" class="form-control" placeholder="Enter Min Degree" />
+<span asp-validation-for="MinDegree" class="text-danger"></span>
 	<br />
 
 	<label asp-for="SelectedDepartmentId">Department</label>
 	<select asp-for="SelectedDepartmentId" asp-items="@deptOptions" class="form-control">
+<option value="-1">Select a Department</option>
 	</select>
+<span asp-validation-for="SelectedDepartmentId" class="text-danger"></span>
 	<br />
 
 	<button type="submit" class="btn btn-primary">Add Course</button>

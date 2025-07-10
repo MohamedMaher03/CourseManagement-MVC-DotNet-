@@ -36,7 +36,10 @@ namespace MVCProject.Controllers
 		public IActionResult AddCourse(CourseForm viewModel)
 		{
 			ModelState.Remove("Departments");
-
+			if(viewModel.SelectedDepartmentId <= 0)
+			{
+				ModelState.AddModelError("SelectedDepartmentId", "Please select a valid department.");
+			}
 			if (ModelState.IsValid==true)
 			{
 				CourseBL courseBL = new CourseBL();
